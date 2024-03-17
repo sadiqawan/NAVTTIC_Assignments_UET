@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 
 class FirstAssignment extends StatelessWidget {
   const FirstAssignment({super.key});
@@ -16,7 +17,7 @@ class FirstAssignment extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-          height: 200,
+          height: 150,
           width: 400,
           decoration:  BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -24,13 +25,13 @@ class FirstAssignment extends StatelessWidget {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-              Colors.tealAccent,
+              Colors.yellow,
+              Colors.greenAccent,
               Colors.blue,
-              Colors.red,
             ])
           ),
           child:const  Center(
-            child: Text('Hello' ,style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold),),
+            child: Text('Hello World\n This is a new package',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
           ),
         ),
 
