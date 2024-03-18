@@ -19,22 +19,25 @@ class FirstAssignment extends StatelessWidget {
         child: Container(
           height: 150,
           width: 400,
-          decoration:  BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            gradient: const  LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-              Colors.yellow,
-              Colors.greenAccent,
-              Colors.blue,
-            ])
-          ),
-          child:const  Center(
-            child: Text('Hello World\n This is a new package',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              boxShadow: [BoxShadow(blurRadius: 10)],
+              gradient: const LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Colors.yellow,
+                    Colors.greenAccent,
+                    Colors.blue,
+                  ])),
+          child: const Center(
+            child: Text(
+              'Hello World\n This is a new package',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
           ),
         ),
-
       ),
     );
   }
