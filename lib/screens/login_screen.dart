@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -9,18 +10,17 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   late TextEditingController emailC, passC;
-
+  bool obscureText = true;
 
   @override
   void initState() {
-   emailC = TextEditingController();
-   passC= TextEditingController();
+    emailC = TextEditingController();
+    passC = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-
     emailC.dispose();
     passC.dispose();
     super.dispose();
@@ -35,42 +35,69 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            TextField(
-              controller: emailC,
-              decoration: const InputDecoration(
-                hintText: 'Email',
-               labelText: 'Email',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.email_outlined)
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+              Container(
+                height: 150,
+                width: MediaQuery.of(context).size.width,
+                color: Colors.teal,
+                child: const Center(
+                    child: Text(
+                  'Welcome Back ',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                )),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextField(
-              controller: passC,
-              decoration: const InputDecoration(
-                hintText: 'Password',
-               labelText: 'Password',
-                border: OutlineInputBorder(),
-                suffixIcon: Icon(Icons.remove_red_eye),
-                  prefixIcon: Icon(Icons.lock)
-
+              const SizedBox(
+                height: 20,
               ),
-            ),
+              TextField(
+                keyboardType: TextInputType.emailAddress,
 
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(onPressed: (){
-
-            }, child: const Text('Login') ),
-          ],
+                controller: emailC,
+                decoration: const InputDecoration(
+                    hintText: 'Email',
+                    labelText: 'Email',
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.email_outlined)),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              TextField(
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: obscureText,
+                controller: passC,
+                decoration: InputDecoration(
+                    hintText: 'Password',
+                    labelText: 'Password',
+                    border: const OutlineInputBorder(),
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            obscureText = !obscureText;
+                          });
+                        },
+                        icon: Icon(obscureText
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined)),
+                    prefixIcon: const Icon(Icons.lock)),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Align(
+                  alignment: Alignment.bottomRight,
+                  child: TextButton(
+                      onPressed: () {}, child: const Text('ForgetPassword'))),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(onPressed: () {}, child: const Text('Login')),
+            ],
+          ),
         ),
       ),
     );
