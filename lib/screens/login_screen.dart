@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:nattic_assignments/screens/first_assignment.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -35,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Column(
@@ -43,11 +45,12 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                 height: 150,
                 width: MediaQuery.of(context).size.width,
-                color: Colors.teal,
+               
+                decoration: BoxDecoration(  color: Colors.teal,borderRadius: BorderRadius.circular(20)),
                 child: const Center(
                     child: Text(
                   'Welcome Back ',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.white),
                 )),
               ),
               const SizedBox(
@@ -55,7 +58,6 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               TextField(
                 keyboardType: TextInputType.emailAddress,
-
                 controller: emailC,
                 decoration: const InputDecoration(
                     hintText: 'Email',
@@ -95,16 +97,32 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 20,
               ),
-            Expanded(child: Column(children: [
-              InkWell(
-                child: Container(
-                  height: 30,
-                  width: double.infinity,
-                  color: Colors.teal,
-                  child: Center(child: Text('Login',style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),)),
-                ),
-              )
-            ],))
+              Expanded(
+                  child: Column(
+                children: [
+                  GestureDetector(
+                    onTap:(){
+
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => FirstAssignment()));
+              },
+
+
+                    child: Container(
+                      height: 50,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: Colors.teal,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: const Center(
+                          child: Text(
+                        'Login',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.white),
+                      )),
+                    ),
+                  )
+                ],
+              ))
             ],
           ),
         ),
